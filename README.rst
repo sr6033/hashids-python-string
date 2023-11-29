@@ -1,8 +1,8 @@
-==========================
+============================
 hashidstr for Python 2.7 & 3
-==========================
+============================
 
-A string support addition to the hashids algorithm. Website: http://www.hashids.org/
+A string support addition to the hashids algorithm (A python port of the JavaScript hashids implementation). Website: http://www.hashids.org/
 
 Compatibility
 =============
