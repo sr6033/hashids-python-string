@@ -156,6 +156,11 @@ The same is valid for incremented numbers:
   hashids.encode(4) # '2l'
   hashids.encode(5) # 'rD'
 
+TODO
+====
+
+- Add back support to the integer encode function
+
 License
 =======
 

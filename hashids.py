@@ -222,9 +222,12 @@ class Hashids(object):
         :param values The values to transform into a hashid
 
         >>> hashids = Hashids('arbitrary salt', 16, 'abcdefghijkl0123456')
-        >>> hashids.encode(1, 23, 456)
+        >>> hashids.encode([1, 23, 456])
         '1d6216i30h53elk3'
         """
+        if values and type(values) != list:
+            values = [values]
+
         if not (values and all(_is_uint(x) for x in values)):
             return ''
 
@@ -262,28 +265,3 @@ class Hashids(object):
             raise Exception("Already decoded")
         result = "".join(chr(i) for i in numbers)
         return result
-
-    def encode_hex(self, hex_str):
-        """Converts a hexadecimal string (e.g. a MongoDB id) to a hashid.
-
-        :param hex_str The hexadecimal string to encodes
-
-        >>> Hashids.encode_hex('507f1f77bcf86cd799439011')
-        'y42LW46J9luq3Xq9XMly'
-        """
-        numbers = (int('1' + hex_str[i:i+12], 16)
-                   for i in range(0, len(hex_str), 12))
-        try:
-            return self.encode(*numbers)
-        except ValueError:
-            return ''
-
-    def decode_hex(self, hashid):
-        """Restores a hexadecimal string (e.g. a MongoDB id) from a hashid.
-
-        :param hashid The hashid to decode
-
-        >>> Hashids.decode_hex('y42LW46J9luq3Xq9XMly')
-        '507f1f77bcf86cd799439011'
-        """
-        return ''.join(('%x' % x)[1:] for x in self.decode(hashid))
