@@ -1,5 +1,5 @@
 ==========================
-hashids for Python 2.7 & 3
+hashidstr for Python 2.7 & 3
 ==========================
 
 A string support addition to the hashids algorithm. Website: http://www.hashids.org/
@@ -42,7 +42,7 @@ Import the constructor from the ``hashids`` module:
 
 .. code:: python
 
-  from hashids import Hashids
+  from hashidstr import Hashids
   hashids = Hashids()
 
 Basic Usage
