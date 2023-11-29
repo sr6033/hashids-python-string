@@ -1,4 +1,7 @@
-"""Implements the hashids algorithm in python. For more information, visit http://hashids.org/"""
+"""
+Implements the hashids algorithm in python with support of string.
+For details visit: https://github.com/sr6033/hashids-python-string
+"""
 
 import warnings
 from functools import wraps
@@ -213,7 +216,7 @@ class Hashids(object):
         self.decrypt = _deprecated(self.decode, "decrypt")
         self.encrypt = _deprecated(self.encode, "encrypt")
 
-    def encode(self, *values):
+    def encode(self, values):
         """Builds a hash from the passed `values`.
 
         :param values The values to transform into a hashid
@@ -243,9 +246,22 @@ class Hashids(object):
             numbers = tuple(_decode(hashid, self._salt, self._alphabet,
                                     self._separators, self._guards))
 
-            return numbers if hashid == self.encode(*numbers) else ()
+            return numbers if hashid == self.encode(numbers) else ()
         except ValueError:
             return ()
+
+    def encode_string(self, value):
+        result = []
+        for i in range(len(value)):
+            result.append(ord(value[i]))
+        return self.encode(result)
+
+    def decode_string(self, value):
+        numbers = self.decode(value)
+        if not numbers:
+            raise Exception("Already decoded")
+        result = "".join(chr(i) for i in numbers)
+        return result
 
     def encode_hex(self, hex_str):
         """Converts a hexadecimal string (e.g. a MongoDB id) to a hashid.
