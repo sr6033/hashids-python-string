@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [1.3.2] - 2023-11-29
+Added
+  - updated readme
+
 ## [1.3.1] - 2023-11-29
 Added
   - initial release with string support

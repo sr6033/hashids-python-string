@@ -7,7 +7,7 @@ import warnings
 from functools import wraps
 from math import ceil
 
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 
 RATIO_SEPARATORS = 3.5
 RATIO_GUARDS = 12
