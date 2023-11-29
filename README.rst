@@ -9,9 +9,6 @@ Compatibility
 
 hashids is tested with python 2.7 and 3.5–3.8. PyPy and PyPy 3 work as well.
 
-.. image:: https://travis-ci.org/davidaurelio/hashids-python.svg?branch=master
-    :target: https://travis-ci.org/davidaurelio/hashids-python
-
 Compatibility with the JavaScript implementation
 ------------------------------------------------
 
