@@ -4,8 +4,8 @@ build-backend = "flit_core.buildapi"
 
 [tool.flit.metadata]
 module = "hashids"
-author = "David Aurelio"
-author-email = "dev@david-aurelio.com"
+author = "Shubham Rath"
+author-email = "hello@shubhamrath.dev"
 home-page = "https://hashids.org/python/"
 description-file="README.rst"
 classifiers = [
