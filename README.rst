@@ -2,7 +2,7 @@
 hashids for Python 2.7 & 3
 ==========================
 
-A python port of the JavaScript *hashids* implementation. It generates YouTube-like hashes from one or many numbers. Use hashids when you do not want to expose your database ids to the user. Website: http://www.hashids.org/
+A string support addition to the hashids algorithm. Website: http://www.hashids.org/
 
 Compatibility
 =============
@@ -35,15 +35,6 @@ Install the module from PyPI, e. g. with pip:
   pip install hashids
   pip install hashids==0.8.4 # for compatibility with hashids.js 0.1.x
 
-Run the tests
-=============
-
-The tests are written with `pytest <http://pytest.org/latest/>`_. The pytest module has to be installed.
-
-.. code:: bash
-
-  python -m pytest
-
 Usage
 =====
 
@@ -73,13 +64,25 @@ To encode several integers, pass them all at once:
 
 .. code:: python
 
-  hashid = hashids.encode(123, 456, 789) # 'El3fkRIo3'
+  hashid = hashids.encode([123, 456, 789]) # 'El3fkRIo3'
 
 Decoding is done the same way:
 
 .. code:: python
 
   ints = hashids.decode('1B8UvJfXm') # (517, 729, 185)
+
+Encode String:
+
+.. code:: python
+
+  hashid = hashids.encode_string("test string") # 'k5nInZiVpUpBfos9KS6kcgqs0WCX8UEw'
+
+Decode String:
+
+.. code:: python
+
+  string = hashids.decode_string('k5nInZiVpUpBfos9KS6kcgqs0WCX8UEw') # 'test string'
 
 Using A Custom Salt
 -------------------
@@ -152,13 +155,6 @@ The same is valid for incremented numbers:
   hashids.encode(3) # 'yD'
   hashids.encode(4) # '2l'
   hashids.encode(5) # 'rD'
-
-Curses! #$%@
-============
-
-This code was written with the intent of placing generated hashes in visible places – like the URL.  Which makes it unfortunate if generated hashes accidentally formed a bad word.
-
-Therefore, the algorithm tries to avoid generating most common English curse words by never placing the following letters next to each other: **c, C, s, S, f, F, h, H, u, U, i, I, t, T.**
 
 License
 =======
