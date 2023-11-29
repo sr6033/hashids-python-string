@@ -29,8 +29,7 @@ Install the module from PyPI, e. g. with pip:
 
 .. code:: bash
 
-  pip install hashids
-  pip install hashids==0.8.4 # for compatibility with hashids.js 0.1.x
+  pip install hashidstr
 
 Usage
 =====
