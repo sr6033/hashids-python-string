@@ -225,8 +225,8 @@ class Hashids(object):
         >>> hashids.encode([1, 23, 456])
         '1d6216i30h53elk3'
         """
-        if values and type(values) != list:
-            values = [values]
+        # if values and type(values) != list:
+        #     values = [values]
 
         if not (values and all(_is_uint(x) for x in values)):
             return ''
